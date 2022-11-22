@@ -5,4 +5,3 @@
 - Jonathan Adriel - 2106750692
 - Mariana Salma Saraswati - 2106702516
 - Wedens Elma Malau - 2106751165
-- A new Flutter project.
