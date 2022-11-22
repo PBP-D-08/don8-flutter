@@ -1,16 +1,8 @@
-# don8_flutter
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Proyek Akhir Semester - Don8
+- Adyatma Wijaksara Aryaputra Nugraha Yudha - 2106750805
+- Eduardus Tjitrahardja - 2106653602
+- Fajar Rivaldi Ibnusina - 2106707050
+- Jonathan Adriel - 2106750692
+- Mariana Salma Saraswati - 2106702516
+- Wedens Elma Malau - 2106751165
+- A new Flutter project.
