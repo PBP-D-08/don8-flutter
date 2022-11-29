@@ -8,10 +8,10 @@
 - **Wedens Elma Malau** - 2106751165
   
 Tautan aplikasi Heroku: https://don8-proyek-ts.herokuapp.com/
-Tautan apk		        : TBA
+Tautan apk		: TBA
 
 ## Cerita aplikasi yang diajukan serta manfaatnya
-**Don8** merupakan sebuah platform donasi online yang menghubungkan donatur dengan organisasi, dimana organisasi dapat mendaftarkan kegiatan penggalangan dana. Platform donasi memberikan peluang bagi organisasi nonprofit untuk menggalang dana dan masyarakat umum untuk melakukan donasi.
+**Don8** merupakan sebuah platform donasi online yang menghubungkan donatur dengan organisasi, dimana organisasi dapat mendaftarkan kegiatan penggalangan dana. Platform donasi memberikan peluang bagi organisasi non-profit untuk menggalang dana dan masyarakat umum untuk melakukan donasi.
 
 ## Daftar modul yang akan diimplementasikan
 1. **Homepage** 🏠
@@ -52,12 +52,12 @@ Tautan apk		        : TBA
 
    - **Role atau peran pengguna beserta deskripsinya (karena bisa saja lebih dari satu jenis pengguna yang mengakses aplikasi)**
       - **Role pertama**: Donatur 👥 (memberikan donasi (punya saldo)) 
-        - Ketika donatur melakukan registrasi, donatur akan diminta untuk megisi username, password, dan memilih role "Pengguna".
-        - Donatur dapat melakukan top up jika saldo yang dimilikinya sekarang tidak mencukupi untuk melakukan suatu donasi. Uang yang donatur gunakan untuk melakukan topup bersifat fiksi sehingga donatur memiliki uang yang tak hingga
+        - Ketika donatur melakukan registrasi, donatur akan diminta untuk mengisi username, password, dan memilih role "Pengguna".
+        - Donatur dapat melakukan top up jika saldo yang dimilikinya sekarang tidak mencukupi untuk melakukan suatu donasi. Uang yang donatur gunakan untuk melakukan top up bersifat fiksi sehingga donatur memiliki uang yang tak hingga
         - Donatur dapat memilih penggalangan dana mana yang ingin diberikan donasi dan melakukan pembayaran untuk transaksi donasi
       - **Role kedua**: Organisasi 🏢 (menggalang donasi (punya saldo khusus setiap penggalangan dana, saldo total seluruh penggalangan dana)) 
-        - Organisasi dapat mendaftarkan kegiatan penggalangan dana pada website kami.
-        - Uang yang donatur berikan kepada kegiatan tertentu akan terkumpul dan akan langsung diterima oleh organisasi tersebut untuk disalurkan kepada orang terkait. Jumlah uang yang terkumpul untuk masing-masing kegiatan akan ditampilkan juga, beserta target uang yang ingin dikumpulkan, pada halaman website kami.
+        - Organisasi dapat mendaftarkan kegiatan penggalangan dana pada website dan aplikasi kami.
+        - Uang yang donatur berikan kepada kegiatan tertentu akan terkumpul dan akan langsung diterima oleh organisasi tersebut untuk disalurkan kepada orang terkait. Jumlah uang yang terkumpul untuk masing-masing kegiatan akan ditampilkan juga, beserta target uang yang ingin dikumpulkan, pada halaman website dan aplikasi kami.
         - Kegiatan penggalangan dana memiliki expired date yang ditentukan oleh organisasi yang membukanya di mana jika sudah terlewat maka tidak bisa melakukan donasi lagi pada kegiatan tersebut.
         - Organisasi akan mempunyai saldo juga untuk menampung uang yang berasal dari donatur. Organisasi dapat melakukan withdraw jika suatu saat ingin digunakan untuk diberikan kepada orang yang dituju dan sedang membutuhkan.
 
@@ -66,6 +66,10 @@ Tautan apk		        : TBA
    Halaman yang menampilkan donasi dengan akumulasi dana terbanyak dengan informasi rank dan nama donasi.
 
 ## Alur pengintegrasian dengan web service untuk terhubung dengan aplikasi web yang sudah dibuat saat Proyek Tengah Semester
+Agar kita bisa mengakses dan melakukan data delivery dengan Flutter melalui endpoint website yang sudah dibuat sebelumnya, kami menambahkan middleware di proyek Django. Kami akan memanfaatkan endpoint API yang telah kami buat di proyek tengah semester. Endpoint tersebut me-return data dalam bentuk JSON yang dapat kami olah dan baca di Flutter. Kami akan menggunakan fungsi-fungsi dari HTTP package yang disediakan oleh Flutter untuk melakukan HTTP request seperti GET dan POST yang menembak ke url API proyek tengah semester. GET digunakan untuk mengambil data dari web untuk diolah di widget, sedangkan POST digunakan untuk mengirim data ke database Django.
 
-Pertama-tama, kami melengkapi end point pada web untuk setiap modul untuk data delivery. Lalu, agar API dapat diakses, kami juga menambahkan middleware di Django proyeknya. Selanjutnya, kami membuat fungsi async untuk setiap proses yang memerlukan delivery ataupun modifikasi data.
-Lalu memanfaatkan `request.post(url)` dan `request.get(url)` untuk melakukan pemanggilan fungsi views di web service. GET digunakan untuk mengambil data dari web untuk diolah di widget, sedangkan POST digunakan untuk mengirim data ke database Django.
+
+Deployment Aplikasi:
+Unggah APK sebagai Release di Git kelompok.
+Cloud Platform seperti Firebase App Distribution atau Microsoft Visual Studio App Center.
+Gunakan logo aplikasi Anda sendiri.
