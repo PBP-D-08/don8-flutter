@@ -7,7 +7,7 @@
 - **Mariana Salma Saraswati** - 2106702516
 - **Wedens Elma Malau** - 2106751165
   
-Tautan aplikasi Heroku: https://don8-proyek-ts.herokuapp.com/
+Tautan aplikasi Heroku: don8-proyek-ts.up.railway.app
 Tautan apk		: TBA
 
 ## Cerita aplikasi yang diajukan serta manfaatnya
