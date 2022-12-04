@@ -1,5 +1,6 @@
 import 'package:don8_flutter/common/constants.dart';
 import 'package:flutter/material.dart';
+import 'drawer.dart';
 
 class ContohPenggunaan extends StatelessWidget {
   const ContohPenggunaan({super.key});
@@ -8,8 +9,9 @@ class ContohPenggunaan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Don8"),
+        title: const Text("Design System"),
       ),
+      drawer: const DrawerApp(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
