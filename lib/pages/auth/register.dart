@@ -39,7 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
       'password2': _password2,
       'role': role_map[_role],
     });
-    print(response);
     if (response['status'] == true) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Berhasil Register"),
@@ -316,7 +315,6 @@ class _RegisterPageState extends State<RegisterPage> {
                                     TextButton(
                                       onPressed: () {
                                         Navigator.pushNamed(context, '/login');
-                                        // Navigator.of(context).push(_createRoute());
                                       },
                                       style: const ButtonStyle(),
                                       child: const Text(

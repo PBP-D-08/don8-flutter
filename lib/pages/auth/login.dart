@@ -24,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
       'password': _password,
     });
     if (request.loggedIn) {
+      request.cookies['jsonData'] = response.toString();
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Berhasil Login"),
       ));

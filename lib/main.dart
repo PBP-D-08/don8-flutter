@@ -4,7 +4,7 @@ import 'common/constants.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'pages/auth/login.dart';
 import 'pages/auth/register.dart';
-import 'pages/homepage/home.dart';
+import 'pages/portal.dart';
 import 'widgets/example.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           theme: customTheme,
           debugShowCheckedModeBanner: false,
           routes: {
-            "/": (BuildContext context) => const MyHomePage(),
+            "/": (BuildContext context) => const PortalPage(),
             "/login": (BuildContext context) => const LoginPage(),
             "/register": (BuildContext context) => const RegisterPage(),
             "/example": (BuildContext context) => const ContohPenggunaan(),
