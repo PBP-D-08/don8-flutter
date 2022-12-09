@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+User userFromJson(String str) => User.fromJson(json.decode(str));
+
 class User {
   late String username;
   late int id, role, balance;
@@ -9,9 +13,9 @@ class User {
       required this.balance});
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-    id: json["id"],
-    username: json["username"],
-    role: json["role"],
-    balance: json["balance"],
-  );
+        id: json["id"],
+        username: json["username"],
+        role: json["role"],
+        balance: json["balance"],
+      );
 }

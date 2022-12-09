@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -24,7 +26,10 @@ class _LoginPageState extends State<LoginPage> {
       'password': _password,
     });
     if (request.loggedIn) {
-      request.cookies['jsonData'] = response.toString();
+      // persist cookies
+      request.cookies['user'] = (const JsonEncoder()).convert(response['user_data']);
+      request.persist((const JsonEncoder()).convert(request.cookies));
+
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Berhasil Login"),
       ));

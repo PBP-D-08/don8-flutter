@@ -16,7 +16,13 @@ class PortalPage extends StatefulWidget {
 }
 
 class _PortalPageState extends State<PortalPage> {
-  static const List<Widget> _pageOptions = <Widget>[
+  static const List<Widget> _nonUserOptions = <Widget>[
+    Home(),
+    Text("Coming soon"),
+    Text("Coming soon"),
+  ];
+
+  static const List<Widget> _userOptions = <Widget>[
     Home(),
     SavedPage(),
     Text("Coming soon"),
@@ -59,23 +65,27 @@ class _PortalPageState extends State<PortalPage> {
         ),
       ),
       drawer: const DrawerApp(),
-      body: Container(child: _pageOptions.elementAt(_selectedIndex)),
+      body: Container(
+          child: request.loggedIn
+              ? _userOptions.elementAt(_selectedIndex)
+              : _nonUserOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: greenMedium,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
-            label: 'Saved',
-          ),
-          BottomNavigationBarItem(
+          if (request.loggedIn)
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark),
+              label: 'Saved',
+            ),
+          const BottomNavigationBarItem(
             icon: Icon(Icons.comment),
             label: 'Messages',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.leaderboard),
             label: 'Leaderboard',
           ),

@@ -1,10 +1,14 @@
-import 'package:don8_flutter/models/User.dart';
-import 'package:flutter/material.dart';
 import 'package:don8_flutter/common/constants.dart';
-import 'package:provider/provider.dart';
-import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:don8_flutter/models/Donation.dart';
+import 'package:don8_flutter/models/User.dart';
+import 'package:don8_flutter/utils/add_saved.dart';
+import 'package:don8_flutter/utils/delete_saved.dart';
 import 'package:don8_flutter/utils/fetch_donations.dart';
+import 'package:don8_flutter/utils/get_user.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,15 +21,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    var user = request.jsonData['user_data'];
-    if (user != null) {
-      user = User.fromJson(user);
-    }
-
-    // onSaved() async {
-    //   final response =
-    //       await request.post("${dotenv.env['API_URL']}/auth/register_flutter/");
-    // }
+    User? user = getUser(request);
+    Future<List<Donation>> donations =
+        fetchDonations(request, "${dotenv.env['API_URL']}/donation");
 
     return SingleChildScrollView(
       child: Padding(
@@ -75,7 +73,8 @@ class _HomeState extends State<Home> {
               height: 20,
             ),
             FutureBuilder(
-                future: fetchDonations(context, "${dotenv.env['API_URL']}/donation"),
+                future: fetchDonations(
+                    request, "${dotenv.env['API_URL']}/donation"),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.data == null) {
                     return const Center(child: CircularProgressIndicator());
@@ -161,20 +160,49 @@ class _HomeState extends State<Home> {
                                                               .bold))),
                                             ),
                                             if (request.loggedIn)
-                                              IconButton(
-                                                  onPressed: (() => {}),
-                                                  icon: snapshot.data![index]
-                                                          .fields.isSaved
-                                                      ? const Icon(
-                                                          Icons.bookmark,
-                                                          color: orangeLight,
-                                                          size: 30,
-                                                        )
-                                                      : const Icon(
-                                                          Icons.bookmark_border,
-                                                          color: orangeLight,
-                                                          size: 30,
-                                                        )),
+                                              if (snapshot
+                                                  .data![index].fields.isSaved)
+                                                IconButton(
+                                                    onPressed: (() => {
+                                                          deleteSaved(
+                                                              request,
+                                                              context,
+                                                              snapshot
+                                                                  .data![index]
+                                                                  .pk),
+                                                          setState(() {
+                                                            snapshot
+                                                                .data![index]
+                                                                .fields
+                                                                .isSaved = false;
+                                                          })
+                                                        }),
+                                                    icon: const Icon(
+                                                      Icons.bookmark,
+                                                      color: orangeLight,
+                                                      size: 30,
+                                                    ))
+                                              else
+                                                IconButton(
+                                                    onPressed: () => {
+                                                          addSaved(
+                                                              request,
+                                                              context,
+                                                              snapshot
+                                                                  .data![index]
+                                                                  .pk),
+                                                          setState(() {
+                                                            snapshot
+                                                                .data![index]
+                                                                .fields
+                                                                .isSaved = true;
+                                                          })
+                                                        },
+                                                    icon: const Icon(
+                                                      Icons.bookmark_border,
+                                                      color: orangeLight,
+                                                      size: 30,
+                                                    )),
                                           ]),
                                     ),
                                   ],

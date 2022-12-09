@@ -1,3 +1,4 @@
+import 'package:don8_flutter/utils/get_user.dart';
 import 'package:flutter/material.dart';
 import 'package:don8_flutter/common/constants.dart';
 import 'package:provider/provider.dart';
@@ -17,10 +18,7 @@ class _SavedPageState extends State<SavedPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    var user = request.jsonData['user_data'];
-    if (user != null) {
-      user = User.fromJson(user);
-    }
+    User? user = getUser(request);
 
     return SingleChildScrollView(
         child: Padding(
@@ -35,7 +33,7 @@ class _SavedPageState extends State<SavedPage> {
               ),
               FutureBuilder(
                   future: fetchDonations(
-                      context, "${dotenv.env['API_URL']}/saved/json/${user.username}/"),
+                      request, "${dotenv.env['API_URL']}/saved/json/${user?.username}/"),
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.data == null) {
                       return const Center(child: CircularProgressIndicator());
