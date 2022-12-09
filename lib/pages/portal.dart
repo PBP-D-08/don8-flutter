@@ -1,11 +1,11 @@
 import 'package:don8_flutter/models/User.dart';
-import 'package:don8_flutter/models/Donation.dart';
 import 'package:don8_flutter/pages/saved/saved.dart';
 import 'package:flutter/material.dart';
 import 'package:don8_flutter/common/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/widgets/drawer.dart';
+import 'package:don8_flutter/utils/get_user.dart';
 import 'homepage/home.dart';
 
 class PortalPage extends StatefulWidget {
@@ -40,10 +40,7 @@ class _PortalPageState extends State<PortalPage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    var user = request.jsonData['user_data'];
-    if (user != null) {
-      user = User.fromJson(user);
-    }
+    User? user = getUser(request);
 
     return Scaffold(
       appBar: AppBar(
@@ -66,7 +63,7 @@ class _PortalPageState extends State<PortalPage> {
       ),
       drawer: const DrawerApp(),
       body: Container(
-          child: request.loggedIn
+          child: request.loggedIn && user?.role == 1
               ? _userOptions.elementAt(_selectedIndex)
               : _nonUserOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
@@ -76,7 +73,7 @@ class _PortalPageState extends State<PortalPage> {
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          if (request.loggedIn)
+          if (request.loggedIn && user?.role == 1)
             const BottomNavigationBarItem(
               icon: Icon(Icons.bookmark),
               label: 'Saved',
