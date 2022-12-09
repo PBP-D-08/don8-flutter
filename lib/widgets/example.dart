@@ -9,7 +9,22 @@ class ContohPenggunaan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Design System"),
+        title: Wrap(
+          direction: Axis.horizontal,
+          spacing: 10,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+              child: Image.asset(
+                'assets/images/logo.png',
+                height: 40,
+                width: 40,
+                alignment: Alignment.center,
+              ),
+            ),
+            const Text("Design System"),
+          ],
+        ),
       ),
       drawer: const DrawerApp(),
       body: SingleChildScrollView(
@@ -31,19 +46,20 @@ class ContohPenggunaan extends StatelessWidget {
                 "ini headline 4 TextTheme",
                 style: myTextTheme.headline4,
               ),
-      
+
               // Ini kalo misalkan mau override style pake class TextStyle
               Text(
                 "ini heading 2 ganti warna",
                 style: heading2.copyWith(color: orangeMedium),
               ),
-      
+
               Text(
                 "ini default text style nya, kalo mau override pake ini aja",
                 style: defaultText.copyWith(
                     color: orangeDark, fontWeight: FontWeight.w600),
               ),
-              ElevatedButton(onPressed: (() => {}), child: const Text("tes button")),
+              ElevatedButton(
+                  onPressed: (() => {}), child: const Text("tes button")),
               TextButton(
                   onPressed: (() => {}), child: const Text("ini textButton"))
             ],
