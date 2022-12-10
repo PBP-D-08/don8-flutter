@@ -36,7 +36,7 @@ class Fields {
     required this.moneyNeeded,
     required this.moneyAccumulated,
     required this.isSaved,
-    required this.currRole,
+    this.currRole,
   });
 
   String title;
@@ -47,7 +47,7 @@ class Fields {
   int moneyNeeded;
   int moneyAccumulated;
   bool isSaved;
-  int currRole;
+  int? currRole;
 
   factory Fields.fromJson(Map<String, dynamic> json) => Fields(
         title: json["title"],

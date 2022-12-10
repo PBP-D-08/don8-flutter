@@ -159,7 +159,7 @@ class _HomeState extends State<Home> {
                                                           fontWeight: FontWeight
                                                               .bold))),
                                             ),
-                                            if (request.loggedIn)
+                                            if (request.loggedIn && user?.role == 1)
                                               if (snapshot
                                                   .data![index].fields.isSaved)
                                                 IconButton(
