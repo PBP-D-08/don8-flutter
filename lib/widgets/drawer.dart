@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:don8_flutter/models/globals/last_donation.dart';
 
 class DrawerApp extends StatelessWidget {
   const DrawerApp({super.key});
@@ -33,6 +34,7 @@ class DrawerApp extends StatelessWidget {
               onTap: () async {
                 final response =
                     await request.logout("${dotenv.env['API_URL']}/auth/logout_flutter/");
+                LastDonation.reset();
                 Navigator.pushNamed(context, '/login');
               },
             ),

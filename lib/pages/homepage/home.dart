@@ -1,10 +1,12 @@
 import 'package:don8_flutter/common/constants.dart';
 import 'package:don8_flutter/models/Donation.dart';
 import 'package:don8_flutter/models/User.dart';
+import 'package:don8_flutter/models/globals/available_donation.dart';
 import 'package:don8_flutter/utils/add_saved.dart';
 import 'package:don8_flutter/utils/delete_saved.dart';
 import 'package:don8_flutter/utils/fetch_donations.dart';
 import 'package:don8_flutter/utils/get_user.dart';
+import 'package:don8_flutter/pages/donation_page/donation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
@@ -93,7 +95,8 @@ class _HomeState extends State<Home> {
                       return ListView.builder(
                           shrinkWrap: true,
                           itemCount: snapshot.data!.length,
-                          itemBuilder: (_, index) => Card(
+                          itemBuilder: (_, index) =>
+                              Card(
                                 clipBehavior: Clip.antiAlias,
                                 color: greenMedium,
                                 child: Column(
@@ -147,7 +150,16 @@ class _HomeState extends State<Home> {
                                               padding:
                                                   const EdgeInsets.only(top: 8),
                                               child: ElevatedButton(
-                                                  onPressed: (() => {}),
+                                                  onPressed: (() => {
+                                                    AvailableDonation.addToList(snapshot.data![index].pk),
+                                                    Navigator.pushReplacement(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                          DonationPage(donation: snapshot.data![index]),
+                                                      )
+                                                    )
+                                                  }),
                                                   style: ButtonStyle(
                                                       backgroundColor:
                                                           MaterialStateProperty
