@@ -6,6 +6,8 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/utils/fetch_donations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:don8_flutter/models/User.dart';
+import 'package:don8_flutter/models/globals/available_donation.dart';
+import 'package:don8_flutter/pages/donation_page/donation.dart';
 
 class SavedPage extends StatefulWidget {
   const SavedPage({Key? key}) : super(key: key);
@@ -108,7 +110,16 @@ class _SavedPageState extends State<SavedPage> {
                                                 padding: const EdgeInsets.only(
                                                     top: 8),
                                                 child: ElevatedButton(
-                                                    onPressed: (() => {}),
+                                                    onPressed: (() => {
+                                                      AvailableDonation.addToList(snapshot.data![index].pk),
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                DonationPage(donation: snapshot.data![index]),
+                                                          )
+                                                      )
+                                                    }),
                                                     style: ButtonStyle(
                                                         backgroundColor:
                                                             MaterialStateProperty
