@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:don8_flutter/models/globals/donated_money.dart';
 
 User userFromJson(String str) => User.fromJson(json.decode(str));
 
@@ -10,7 +11,9 @@ class User {
       {required this.id,
       required this.username,
       required this.role,
-      required this.balance});
+      required this.balance}) {
+    this.balance -= DonatedMoney.amount;
+  }
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],

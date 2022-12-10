@@ -6,6 +6,7 @@ import 'package:don8_flutter/models/user_donation.dart';
 import 'package:don8_flutter/models/Donation.dart';
 import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/models/globals/last_donation.dart';
+import 'package:don8_flutter/models/globals/donated_money.dart';
 import 'package:don8_flutter/widgets/drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/utils/get_user.dart';
@@ -58,8 +59,6 @@ class _DonationPageState extends State<DonationPage> {
     int currentYear = int.parse(currentDate.substring(0, 4));
     int currentMonth = int.parse(currentDate.substring(5, 7));
     int currentDay = int.parse(currentDate.substring(8, 10));
-
-    print(LastDonation.time[widget.donation.pk.toString()]);
 
     return Scaffold(
       appBar: AppBar(
@@ -553,6 +552,7 @@ class _DonationPageState extends State<DonationPage> {
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
                                         currentUser!.balance -= amountOfDonation;
+                                        DonatedMoney.amount += amountOfDonation;
                                         setState(() {
                                           temp += amountOfDonation;
                                         });
