@@ -7,7 +7,7 @@ import 'package:don8_flutter/common/constants.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-import '../../widgets/drawer.dart';
+import '../../../widgets/drawer.dart';
 import 'package:intl/intl.dart'; //for date format
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/utils/get_user.dart';
@@ -330,11 +330,11 @@ class _NewDonationState extends State<NewDonation> {
                               createDonation(
                                   context,
                                   request,
-                                  fieldTitle.text, 
+                                  fieldTitle.text,
                                   fieldDescription.text,
-                                  fieldURL.text, 
-                                  dateController.text, 
-                                  fieldNominal.text, 
+                                  fieldURL.text,
+                                  dateController.text,
+                                  fieldNominal.text,
                                   currentUser!.id.toString())
                             }),
                         child: const Text("Create")),

@@ -1,4 +1,5 @@
 import 'package:don8_flutter/models/User.dart';
+import 'package:don8_flutter/pages/leaderboard.dart/leaderboard_page.dart';
 import 'package:don8_flutter/pages/saved/saved.dart';
 import 'package:flutter/material.dart';
 import 'package:don8_flutter/common/constants.dart';
@@ -19,14 +20,14 @@ class _PortalPageState extends State<PortalPage> {
   static const List<Widget> _nonUserOptions = <Widget>[
     Home(),
     Text("Coming soon"),
-    Text("Coming soon"),
+    LeaderboardPage(),
   ];
 
   static const List<Widget> _userOptions = <Widget>[
     Home(),
     SavedPage(),
     Text("Coming soon"),
-    Text("Coming soon"),
+    LeaderboardPage(),
   ];
 
   int _selectedIndex = 0;
