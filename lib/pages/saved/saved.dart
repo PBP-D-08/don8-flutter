@@ -8,6 +8,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/models/globals/available_donation.dart';
 import 'package:don8_flutter/pages/donation_page/donation.dart';
+import 'package:don8_flutter/utils/delete_saved.dart';
+
+import '../../models/Donation.dart';
 
 class SavedPage extends StatefulWidget {
   const SavedPage({Key? key}) : super(key: key);
@@ -22,6 +25,9 @@ class _SavedPageState extends State<SavedPage> {
     final request = context.watch<CookieRequest>();
     User? user = getUser(request);
 
+    String url = "${dotenv.env['API_URL']}/saved/json/${user?.username}/";
+    Future<List<Donation>> _savedDonations = fetchDonations(request, url);
+
     return SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 40, 20, 40),
@@ -34,18 +40,18 @@ class _SavedPageState extends State<SavedPage> {
                 height: 20,
               ),
               FutureBuilder(
-                  future: fetchDonations(
-                      request, "${dotenv.env['API_URL']}/saved/json/${user?.username}/"),
+                  future: _savedDonations,
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.data == null) {
                       return const Center(child: CircularProgressIndicator());
                     } else {
-                      if (!snapshot.hasData) {
+                      if (snapshot!.data.length == 0) {
                         return Column(
                           children: const [
                             Text(
-                              "Tidak ada watch list :(",
+                              "Maaf, anda tidak menyimpan donasi apapun.",
                               style: TextStyle(color: greenDark, fontSize: 20),
+                              textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 8),
                           ],
@@ -111,15 +117,21 @@ class _SavedPageState extends State<SavedPage> {
                                                     top: 8),
                                                 child: ElevatedButton(
                                                     onPressed: (() => {
-                                                      AvailableDonation.addToList(snapshot.data![index].pk),
-                                                      Navigator.pushReplacement(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                DonationPage(donation: snapshot.data![index]),
-                                                          )
-                                                      )
-                                                    }),
+                                                          AvailableDonation
+                                                              .addToList(
+                                                                  snapshot
+                                                                      .data![
+                                                                          index]
+                                                                      .pk),
+                                                          Navigator.pushReplacement(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    DonationPage(
+                                                                        donation:
+                                                                            snapshot.data![index]),
+                                                              ))
+                                                        }),
                                                     style: ButtonStyle(
                                                         backgroundColor:
                                                             MaterialStateProperty
@@ -134,20 +146,25 @@ class _SavedPageState extends State<SavedPage> {
                                               ),
                                               if (request.loggedIn)
                                                 IconButton(
-                                                    onPressed: (() => {}),
-                                                    icon: snapshot.data![index]
-                                                            .fields.isSaved
-                                                        ? const Icon(
-                                                            Icons.bookmark,
-                                                            color: orangeLight,
-                                                            size: 30,
-                                                          )
-                                                        : const Icon(
-                                                            Icons
-                                                                .bookmark_border,
-                                                            color: orangeLight,
-                                                            size: 30,
-                                                          )),
+                                                    onPressed: (() => {
+                                                          deleteSaved(
+                                                              request,
+                                                              context,
+                                                              snapshot
+                                                                  .data![index]
+                                                                  .pk),
+                                                          setState(() {
+                                                            _savedDonations =
+                                                                fetchDonations(
+                                                                    request,
+                                                                    url);
+                                                          })
+                                                        }),
+                                                    icon: const Icon(
+                                                      Icons.bookmark,
+                                                      color: orangeLight,
+                                                      size: 30,
+                                                    ))
                                             ]),
                                       ),
                                     ],
