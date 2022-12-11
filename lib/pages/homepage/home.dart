@@ -81,12 +81,13 @@ class _HomeState extends State<Home> {
                   if (snapshot.data == null) {
                     return const Center(child: CircularProgressIndicator());
                   } else {
-                    if (!snapshot.hasData) {
+                    if (snapshot!.data.length == 0) {
                       return Column(
                         children: const [
                           Text(
-                            "Tidak ada watch list :(",
+                            "Maaf, saat ini tidak ada donasi apapun.",
                             style: TextStyle(color: greenDark, fontSize: 20),
+                            textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 8),
                         ],
@@ -95,8 +96,7 @@ class _HomeState extends State<Home> {
                       return ListView.builder(
                           shrinkWrap: true,
                           itemCount: snapshot.data!.length,
-                          itemBuilder: (_, index) =>
-                              Card(
+                          itemBuilder: (_, index) => Card(
                                 clipBehavior: Clip.antiAlias,
                                 color: greenMedium,
                                 child: Column(
@@ -151,15 +151,20 @@ class _HomeState extends State<Home> {
                                                   const EdgeInsets.only(top: 8),
                                               child: ElevatedButton(
                                                   onPressed: (() => {
-                                                    AvailableDonation.addToList(snapshot.data![index].pk),
-                                                    Navigator.pushReplacement(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                          DonationPage(donation: snapshot.data![index]),
-                                                      )
-                                                    )
-                                                  }),
+                                                        AvailableDonation
+                                                            .addToList(snapshot
+                                                                .data![index]
+                                                                .pk),
+                                                        Navigator.pushReplacement(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  DonationPage(
+                                                                      donation:
+                                                                          snapshot
+                                                                              .data![index]),
+                                                            ))
+                                                      }),
                                                   style: ButtonStyle(
                                                       backgroundColor:
                                                           MaterialStateProperty
@@ -171,7 +176,8 @@ class _HomeState extends State<Home> {
                                                           fontWeight: FontWeight
                                                               .bold))),
                                             ),
-                                            if (request.loggedIn && user?.role == 1)
+                                            if (request.loggedIn &&
+                                                user?.role == 1)
                                               if (snapshot
                                                   .data![index].fields.isSaved)
                                                 IconButton(

@@ -9,7 +9,6 @@ addSaved(CookieRequest request, BuildContext context, int id) async {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text("Berhasil menyimpan donasi!"),
     ));
-    // Navigator.pushNamed(context, "/");
   } else {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text("Gagal menyimpan donasi!"),
