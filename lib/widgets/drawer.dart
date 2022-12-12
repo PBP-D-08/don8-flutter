@@ -18,8 +18,6 @@ class DrawerApp extends StatelessWidget {
     final request = context.watch<CookieRequest>();
     final currentUser = getUser(request);
 
-    final user = request.cookies['user'];
-
     return Drawer(
       child: Column(
         children: [
@@ -31,7 +29,7 @@ class DrawerApp extends StatelessWidget {
               onTap: () {
                 Navigator.pushReplacement( context, MaterialPageRoute( builder:
                     (context) => OrgProfile(
-                      user: User.fromJson(jsonDecode(user!)),
+                      user: currentUser!,
                       status: "all",
                     )
                   ),
