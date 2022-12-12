@@ -44,6 +44,7 @@ class DrawerApp extends StatelessWidget {
               Navigator.pushNamed(context, '/');
             },
           ),
+          
           if (!request.loggedIn)
             ListTile(
               title: const Text('Login'),
@@ -75,6 +76,19 @@ class DrawerApp extends StatelessWidget {
                 Navigator.pushNamed(context, '/newdonation');
               },
             ),
+          if (currentUser?.role == 1)
+            ListTile(
+              title: const Text('Profile'),
+              onTap: () {
+                Navigator.pushNamed(context, '/user_profile');
+              },
+            ),
+            ListTile(
+              title: const Text('History'),
+              onTap: () {
+                Navigator.pushNamed(context, '/history');
+              },
+            )
         ],
       ),
     );
