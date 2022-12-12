@@ -1,10 +1,14 @@
 import 'package:don8_flutter/utils/get_user.dart';
+import 'dart:convert';
+
+import 'package:don8_flutter/pages/org_profile/org_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:don8_flutter/models/globals/donated_money.dart';
 import 'package:don8_flutter/models/globals/last_donation.dart';
+import 'package:don8_flutter/models/User.dart';
 
 class DrawerApp extends StatelessWidget {
   const DrawerApp({super.key});
@@ -18,6 +22,21 @@ class DrawerApp extends StatelessWidget {
       child: Column(
         children: [
           // Menambahkan clickable menu
+
+          if (request.cookies["user"] != null)
+            ListTile(
+              title: const Text("Profil"),
+              onTap: () {
+                Navigator.pushReplacement( context, MaterialPageRoute( builder:
+                    (context) => OrgProfile(
+                      user: currentUser!,
+                      status: "all",
+                    )
+                  ),
+                );
+              },
+            ),
+
           ListTile(
             title: const Text('Home'),
             onTap: () {
@@ -43,12 +62,12 @@ class DrawerApp extends StatelessWidget {
                 Navigator.pushNamed(context, '/login');
               },
             ),
-          ListTile(
-            title: const Text('Design System'),
-            onTap: () {
-              Navigator.pushNamed(context, '/example');
-            },
-          ),
+          // ListTile(
+          //   title: const Text('Design System'),
+          //   onTap: () {
+          //     Navigator.pushNamed(context, '/example');
+          //   },
+          // ),
           if (currentUser?.role == 2)
             ListTile(
               title: const Text('New Donation'),

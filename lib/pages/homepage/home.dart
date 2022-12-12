@@ -182,7 +182,7 @@ class _HomeState extends State<Home> {
                                           alignment: WrapAlignment.center,
                                           children: [
                                             Container(
-                                              margin: EdgeInsets.all(20),
+                                              margin: EdgeInsets.only(top: 5),
                                               height: 35,
                                               child: ElevatedButton(
                                                   onPressed: (() => {
