@@ -43,12 +43,12 @@ class DrawerApp extends StatelessWidget {
                 Navigator.pushNamed(context, '/login');
               },
             ),
-          ListTile(
-            title: const Text('Design System'),
-            onTap: () {
-              Navigator.pushNamed(context, '/example');
-            },
-          ),
+          // ListTile(
+          //   title: const Text('Design System'),
+          //   onTap: () {
+          //     Navigator.pushNamed(context, '/example');
+          //   },
+          // ),
           if (currentUser?.role == 2)
             ListTile(
               title: const Text('New Donation'),
