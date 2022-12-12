@@ -12,6 +12,8 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/utils/get_user.dart';
 import 'package:provider/provider.dart';
 
+import '../org_profile/org_profile.dart';
+
 class DonationPage extends StatefulWidget {
   final Donation donation;
 
@@ -243,6 +245,15 @@ class _DonationPageState extends State<DonationPage> {
                                         ),
                                         onPressed: () {
                                           // route ke profile organisasi
+                                          Navigator.pushReplacement(
+                                            context, MaterialPageRoute(builder:
+                                              (context) =>
+                                              OrgProfile(
+                                                user: snapshot.data!.organization,
+                                                status: "cmp",
+                                              )
+                                          ),
+                                          );
                                         },
                                       ),
                                     )
