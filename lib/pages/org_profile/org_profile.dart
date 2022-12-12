@@ -325,22 +325,50 @@ class _OrgProfileState extends State<OrgProfile> {
                     direction: Axis.vertical,
                     spacing: 10,
                     children: [
-                      // FutureBuilder(
-                      //     future: fetchOrg(request, "${dotenv.env['API_URL']}/profile/org/${widget.user.username}/donationsshow"),
-                      //     builder: (context, AsyncSnapshot snapshot) {
-                      //       return Column(
-                      //         children: [
-                      //           Text(
-                      //             snapshot.data[0],
-                      //             style: TextStyle(
-                      //                 color: greenDark, fontSize: 20),
-                      //             textAlign: TextAlign.center,
-                      //           ),
-                      //           SizedBox(height: 8),
-                      //         ],
-                      //       );
-                      //   }
-                      // )
+                      FutureBuilder(
+                          future: fetchOrg(request, "${dotenv.env['API_URL']}/profile/org/${widget.user.username}/donationsshow"),
+                          builder: (context, AsyncSnapshot snapshot) {
+                            return Column(
+                              children: [
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  "Berhasil Mengumpulkan",
+                                  style: myTextTheme.headline3,
+                                  textAlign: TextAlign.justify,
+                                ),
+                                Text(
+                                  "Rp. ${widget.user.balance} ,00",
+                                  style:  heading2.copyWith(color: orangeMedium),
+                                  textAlign: TextAlign.justify,
+                                ),
+                                Wrap(
+                                  direction: Axis.horizontal,
+                                  spacing: 10,
+                                  children: [
+                                    Text(
+                                      "Dari ",
+                                      style: myTextTheme.headline3,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      "${snapshot.data[0].fields.total_campaign}",
+                                      style: heading3.copyWith(color: orangeMedium),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      " Donasi",
+                                      style: myTextTheme.headline3,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 8),
+                              ],
+                            );
+                          }
+                      )
                     ],
                   ),
                   const SizedBox(
@@ -586,22 +614,50 @@ class _OrgProfileState extends State<OrgProfile> {
                   direction: Axis.vertical,
                   spacing: 10,
                   children: [
-                    // FutureBuilder(
-                    //     future: fetchOrg(request, "${dotenv.env['API_URL']}/profile/org/${widget.user.username}/donationsshow"),
-                    //     builder: (context, AsyncSnapshot snapshot) {
-                    //       return Column(
-                    //         children: [
-                    //           Text(
-                    //             snapshot.data[0],
-                    //             style: TextStyle(
-                    //                 color: greenDark, fontSize: 20),
-                    //             textAlign: TextAlign.center,
-                    //           ),
-                    //           SizedBox(height: 8),
-                    //         ],
-                    //       );
-                    //   }
-                    // )
+                    FutureBuilder(
+                        future: fetchOrg(request, "${dotenv.env['API_URL']}/profile/org/${widget.user.username}/donationsshow"),
+                        builder: (context, AsyncSnapshot snapshot) {
+                          return Column(
+                            children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Berhasil Mengumpulkan",
+                                style: myTextTheme.headline3,
+                                textAlign: TextAlign.justify,
+                              ),
+                              Text(
+                                "Rp. ${widget.user.balance} ,00",
+                                style:  heading2.copyWith(color: orangeMedium),
+                                textAlign: TextAlign.justify,
+                              ),
+                              Wrap(
+                                direction: Axis.horizontal,
+                                spacing: 10,
+                                children: [
+                                  Text(
+                                    "Dari ",
+                                    style: myTextTheme.headline3,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Text(
+                                    "${snapshot.data[0].fields.total_campaign}",
+                                    style: heading3.copyWith(color: orangeMedium),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Text(
+                                    " Donasi",
+                                    style: myTextTheme.headline3,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 8),
+                            ],
+                          );
+                        }
+                    )
                   ],
                 ),
                 const SizedBox(
