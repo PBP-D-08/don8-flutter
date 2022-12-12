@@ -63,13 +63,16 @@ class _SavedPageState extends State<SavedPage> {
                             itemBuilder: (_, index) => Card(
                                   clipBehavior: Clip.antiAlias,
                                   color: greenMedium,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(24),
+                                  ),
                                   child: Column(
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(10.0),
                                         child: ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(4),
+                                              BorderRadius.circular(16),
                                           child: Image.network(snapshot
                                               .data![index].fields.imageUrl),
                                         ),
