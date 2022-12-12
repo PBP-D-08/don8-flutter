@@ -1,4 +1,5 @@
 import 'package:don8_flutter/pages/new_donation/newdonation.dart';
+import 'package:don8_flutter/pages/user_profile/history.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'common/constants.dart';
@@ -9,6 +10,8 @@ import 'pages/portal.dart';
 import 'widgets/example.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'pages/supportmsg/support.dart';
+import 'pages/user_profile/user_profile.dart';
+import 'pages/user_profile/history.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -36,6 +39,8 @@ class MyApp extends StatelessWidget {
             "/example": (BuildContext context) => const ContohPenggunaan(),
             "/newdonation": (BuildContext context) => const NewDonation(),
             "/message": (BuildContext context) => const ShowMessage(),
+            "/user_profile": (BuildContext context) => const UserProfile(),
+            "/history": (BuildContext context) => const HistoryPage(),
           },
         ));
   }
