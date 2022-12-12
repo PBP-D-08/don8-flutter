@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:don8_flutter/models/user_donation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-Future<List<UserDonation>> fetchUserDonations() async {
+Future<List<UserDonation>> fetchUserDonation() async {
   var url = Uri.parse("${dotenv.env['API_URL']}/donation/get-user-donations/");
   var response = await http.get(
     url,

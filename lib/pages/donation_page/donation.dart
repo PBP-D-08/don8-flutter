@@ -222,7 +222,7 @@ class _DonationPageState extends State<DonationPage> {
                                   color: Color(0xFF006d77),
                                   borderRadius: BorderRadius.circular(24),
                                 ),
-                                child: Row(
+                                child: Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
