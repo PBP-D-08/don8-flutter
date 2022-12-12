@@ -524,7 +524,7 @@ class _DonationPageState extends State<DonationPage> {
 
                                               } else {
                                                 setState(() {
-                                                  amountOfDonation = int.parse(value!);
+                                                  amountOfDonation = int.parse(value);
                                                 });
                                               }
                                             }
