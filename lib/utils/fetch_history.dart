@@ -8,7 +8,7 @@ import '../models/User.dart';
 
 Future<List<UserDonation>> fetchHistory(CookieRequest request, String url) async {
   User? user = getUser(request);
-  var url = Uri.parse("${dotenv.env['API_URL']}/profile/user/${user?.username}");
+  var url = Uri.parse("${dotenv.env['API_URL']}/profile/user/${user?.username}/history/json/");
   var response = await http.get(
     url,
     headers: {

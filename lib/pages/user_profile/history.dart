@@ -151,27 +151,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                                                 FontWeight
                                                                     .bold))),
                                               ),
-                                              if (request.loggedIn)
-                                                IconButton(
-                                                    onPressed: (() => {
-                                                          deleteSaved(
-                                                              request,
-                                                              context,
-                                                              snapshot
-                                                                  .data![index]
-                                                                  .pk),
-                                                          setState(() {
-                                                            _donationsHistory =
-                                                                fetchHistory(
-                                                                    request,
-                                                                    url);
-                                                          })
-                                                        }),
-                                                    icon: const Icon(
-                                                      Icons.bookmark,
-                                                      color: orangeLight,
-                                                      size: 30,
-                                                    ))
+                                              
                                             ]),
                                       ),
                                     ],

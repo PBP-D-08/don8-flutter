@@ -2,6 +2,7 @@ import 'package:don8_flutter/common/constants.dart';
 import 'package:don8_flutter/models/Donation.dart';
 import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/models/globals/available_donation.dart';
+import 'package:don8_flutter/models/globals/donated_money.dart';
 import 'package:don8_flutter/utils/add_saved.dart';
 import 'package:don8_flutter/utils/delete_saved.dart';
 import 'package:don8_flutter/utils/fetch_donations.dart';
@@ -29,7 +30,7 @@ class _UserProfileState extends State<UserProfile> {
     String username = user!.username;
     // UserProfile? profile = 
     int balance = user!.balance;
-    // int money_donated = UserProfile.
+    int money_donated = DonatedMoney.amount;
     
     return Scaffold(
       appBar: AppBar(
@@ -62,12 +63,12 @@ class _UserProfileState extends State<UserProfile> {
                 textAlign: TextAlign.left,
               ),
               Text(
-                "You have donated:",
+                "You have just donated:",
                 style: defaultText.copyWith(color: orangeDark, fontSize: 30),
                 textAlign: TextAlign.left,
               ),
               Text(
-                "jumlahnya",
+                "Rp${money_donated.toString()}",
                 style: myTextTheme.displayMedium!.copyWith(fontSize: 40),
                 textAlign: TextAlign.left,
               ),
@@ -77,7 +78,7 @@ class _UserProfileState extends State<UserProfile> {
                 textAlign: TextAlign.left,
               ),
               Text(
-                balance.toString(),
+                "Rp${balance.toString()}",
                 style: myTextTheme.displayMedium!.copyWith(fontSize: 40),
                 textAlign: TextAlign.left,
               ),
