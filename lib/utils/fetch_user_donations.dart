@@ -23,6 +23,5 @@ Future<List<UserDonation>> fetchUserDonation() async {
       userDonationList.add(UserDonation.fromJson(d));
     }
   }
-  print(userDonationList);
   return userDonationList;
 }

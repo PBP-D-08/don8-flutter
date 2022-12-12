@@ -12,6 +12,8 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/utils/get_user.dart';
 import 'package:provider/provider.dart';
 
+import '../org_profile/org_profile.dart';
+
 class DonationPage extends StatefulWidget {
   final Donation donation;
 
@@ -222,7 +224,7 @@ class _DonationPageState extends State<DonationPage> {
                                   color: Color(0xFF006d77),
                                   borderRadius: BorderRadius.circular(24),
                                 ),
-                                child: Row(
+                                child: Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
@@ -243,6 +245,15 @@ class _DonationPageState extends State<DonationPage> {
                                         ),
                                         onPressed: () {
                                           // route ke profile organisasi
+                                          Navigator.pushReplacement(
+                                            context, MaterialPageRoute(builder:
+                                              (context) =>
+                                              OrgProfile(
+                                                user: snapshot.data!.organization,
+                                                status: "cmp",
+                                              )
+                                          ),
+                                          );
                                         },
                                       ),
                                     )

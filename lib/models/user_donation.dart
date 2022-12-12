@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:don8_flutter/utils/add_user_donation.dart';
+
 class UserDonation {
   int userPk;
   int organizationPk;
@@ -24,11 +26,9 @@ class UserDonation {
   };
 
   factory UserDonation.fromJson(Map<String, dynamic> json) => UserDonation(
-        userPk: json["user"],
-        organizationPk: json["fields"]["organization"],
-        donationPk: json["fields"]["donation"],
-        date: json["fields"]["date"],
-        amountOfDonation: json["fields"]["amount_of_donation"],
-      );
-
+      userPk: json["fields"]["user"],
+      organizationPk: json["fields"]["organization"],
+      donationPk: json["fields"]["donation"],
+      date: json["fields"]["date"],
+      amountOfDonation: json["fields"]["amount_of_donation"]);
 }
