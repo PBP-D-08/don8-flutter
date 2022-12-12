@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:don8_flutter/models/user_donation.dart';
+import 'package:don8_flutter/utils/top_up.dart';
 
 import '../../models/User.dart';
 
@@ -158,7 +159,7 @@ Future<dynamic> buildForm(
                         // borderRadius: BorderRadius.circular(24),
                       ),
                       child: Text(
-                          "Make a donation",
+                          "Top Up",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -172,7 +173,7 @@ Future<dynamic> buildForm(
                         children: [
                           Expanded(
                             child: Text(
-                                "Amount of donation: ",
+                                "Input Top Up Amount: ",
                                 style: TextStyle(fontSize: 16,
                                     color: Colors.black)
                             ),
@@ -232,8 +233,9 @@ Future<dynamic> buildForm(
                         ),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                              user!.balance += topUpAmount;
-                              Navigator.pop(context);
+                              // user!.balance += topUpAmount;
+                              // Navigator.pop(context);
+                              topUp(context, request);
                           }
                         },
                       ),

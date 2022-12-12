@@ -6,9 +6,9 @@ import 'dart:convert';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import '../models/User.dart';
 
-Future<List<UserDonation>> fetchHistory(CookieRequest request, String url) async {
+Future<List<UserDonation>> fetchHistory(CookieRequest request) async {
   User? user = getUser(request);
-  var url = Uri.parse("${dotenv.env['API_URL']}/profile/user/${user?.username}/history/json/");
+  var url = Uri.parse("${dotenv.env['API_URL']}/profile/user/${user?.username}/flutter-history/");
   var response = await http.get(
     url,
     headers: {

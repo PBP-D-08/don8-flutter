@@ -1,16 +1,15 @@
 import 'package:don8_flutter/utils/fetch_history.dart';
+import 'package:don8_flutter/utils/fetch_user_donations.dart';
 import 'package:don8_flutter/utils/get_user.dart';
 import 'package:don8_flutter/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:don8_flutter/common/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:don8_flutter/utils/fetch_donations.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/models/globals/available_donation.dart';
 import 'package:don8_flutter/pages/donation_page/donation.dart';
-import 'package:don8_flutter/utils/delete_saved.dart';
 import '../../models/Donation.dart';
 import '../../models/user_donation.dart';
 
@@ -28,7 +27,7 @@ class _HistoryPageState extends State<HistoryPage> {
     User? user = getUser(request);
 
     String url = "${dotenv.env['API_URL']}/profile/user/${user?.username}/history/json/";
-    Future<List<UserDonation>> _donationsHistory = fetchHistory(request, url);
+    Future<List<UserDonation>> _donationsHistory = fetchUserDonation();
 
     return Scaffold(
       appBar: AppBar(
@@ -56,7 +55,7 @@ class _HistoryPageState extends State<HistoryPage> {
             child: Column(children: [
               Text(
                 "History",
-                style: myTextTheme.headline4,
+                style: myTextTheme.headline2,
               ),
               const SizedBox(
                 height: 20,

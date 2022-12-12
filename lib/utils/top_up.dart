@@ -2,13 +2,13 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
 import 'package:don8_flutter/models/user_donation.dart';
-
+import 'package:pbp_django_auth/pbp_django_auth.dart';
 import '../models/User.dart';
 
-Future<dynamic> topUp(User user) async {
-  var url = Uri.parse("${dotenv.env['API_URL']}/user/profile/${user.username}/flutter_top_up/");
+Future<dynamic> topUp(CookieRequest request, String url) async {
+  Uri uri = Uri.parse(url);
   var response = await http.post(
-      url,
+      uri,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",

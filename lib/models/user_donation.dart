@@ -25,10 +25,10 @@ class UserDonation {
 
   factory UserDonation.fromJson(Map<String, dynamic> json) => UserDonation(
         userPk: json["user"],
-        organizationPk: json["organization"],
-        donationPk: json["donation"],
-        date: json["date"],
-        amountOfDonation: json["amount_of_donation"],
+        organizationPk: json["fields"]["organization"],
+        donationPk: json["fields"]["donation"],
+        date: json["fields"]["date"],
+        amountOfDonation: json["fields"]["amount_of_donation"],
       );
 
 }
