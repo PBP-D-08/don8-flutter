@@ -1,3 +1,4 @@
+import 'package:don8_flutter/utils/get_user.dart';
 import 'dart:convert';
 
 import 'package:don8_flutter/pages/org_profile/org_profile.dart';
@@ -15,6 +16,8 @@ class DrawerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
+    final currentUser = getUser(request);
+
     final user = request.cookies['user'];
 
     return Drawer(
@@ -54,8 +57,8 @@ class DrawerApp extends StatelessWidget {
             ListTile(
               title: const Text('Logout'),
               onTap: () async {
-                final response =
-                    await request.logout("${dotenv.env['API_URL']}/auth/logout_flutter/");
+                final response = await request
+                    .logout("${dotenv.env['API_URL']}/auth/logout_flutter/");
                 DonatedMoney.amount = 0;
                 LastDonation.reset();
                 Navigator.pushNamed(context, '/login');
@@ -67,6 +70,13 @@ class DrawerApp extends StatelessWidget {
               Navigator.pushNamed(context, '/example');
             },
           ),
+          if (currentUser?.role == 2)
+            ListTile(
+              title: const Text('New Donation'),
+              onTap: () {
+                Navigator.pushNamed(context, '/newdonation');
+              },
+            ),
         ],
       ),
     );

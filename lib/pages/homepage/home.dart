@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -58,11 +59,14 @@ class _HomeState extends State<Home> {
             const SizedBox(
               height: 20,
             ),
-            Text(
-              "Sebuah platform donasi online yang menghubungkan donatur dengan organisasi, dimana organisasi dapat mendaftarkan kegiatan penggalangan dana. Platform donasi memberikan peluang bagi organisasi nonprofit untuk menggalang dana dan masyarakat umum untuk melakukan donasi.",
-              style: defaultText.copyWith(
-                  color: greenDark, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.justify,
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  "Sebuah platform donasi online yang menghubungkan donatur dengan organisasi, dimana organisasi dapat mendaftarkan kegiatan penggalangan dana. Platform donasi memberikan peluang bagi organisasi nonprofit untuk menggalang dana dan masyarakat umum untuk melakukan donasi.",
+                  style: defaultText.copyWith(
+                      color: greenDark, fontWeight: FontWeight.w600),
+                  textAlign: TextAlign.justify,
+                ),
             ),
             const SizedBox(
               height: 140,
@@ -81,7 +85,7 @@ class _HomeState extends State<Home> {
                   if (snapshot.data == null) {
                     return const Center(child: CircularProgressIndicator());
                   } else {
-                    if (snapshot!.data.length == 0) {
+                    if (snapshot.data.length == 0) {
                       return Column(
                         children: const [
                           Text(
@@ -99,33 +103,64 @@ class _HomeState extends State<Home> {
                           itemBuilder: (_, index) => Card(
                                 clipBehavior: Clip.antiAlias,
                                 color: greenMedium,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                                margin: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.all(10.0),
+                                      padding: const EdgeInsets.all(15),
                                       child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(4),
+                                        borderRadius: BorderRadius.circular(16),
                                         child: Image.network(snapshot
                                             .data![index].fields.imageUrl),
                                       ),
                                     ),
+                                    SizedBox(
+                                      height: 18,
+                                    ),
                                     ListTile(
-                                      title: Text(
-                                        snapshot.data![index].fields.title,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: brokenWhite),
-                                        textAlign: TextAlign.center,
+                                      title: Padding(
+                                        padding: const EdgeInsets.only(bottom: 15),
+                                        child: Text(
+                                          snapshot.data![index].fields.title,
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 24,
+                                              color: Color(0xFFFFDDD2)),
+                                          textAlign: TextAlign.center,
+                                        ),
                                       ),
-                                      subtitle: Text(
-                                        'Rp ${snapshot.data![index].fields.moneyAccumulated} terkumpul',
-                                        style:
-                                            const TextStyle(color: brokenWhite),
+                                      subtitle: RichText(
+                                        text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: "Rp ",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                    color: Color(0xFFFFDDD2)),
+                                              ),
+                                              TextSpan(
+                                                text: NumberFormat.decimalPattern('en_us').format(snapshot.data![index].fields.moneyAccumulated).toString().replaceAll(",", "."),
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16,
+                                                    color: Color(0xFFEDF6F9)),
+                                              ),
+                                              TextSpan(
+                                                text: " terkumpul",
+                                                style: TextStyle(fontSize: 16,
+                                                    color: Color(0xFFFFDDD2)),
+                                              ),
+                                            ]
+                                        ),
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.all(10.0),
+                                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: LinearProgressIndicator(
@@ -141,14 +176,14 @@ class _HomeState extends State<Home> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
-                                          0, 0, 0, 20),
+                                          0, 0, 0, 16),
                                       child: Wrap(
                                           spacing: 10,
                                           alignment: WrapAlignment.center,
                                           children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.only(top: 8),
+                                            Container(
+                                              margin: EdgeInsets.all(20),
+                                              height: 35,
                                               child: ElevatedButton(
                                                   onPressed: (() => {
                                                         AvailableDonation

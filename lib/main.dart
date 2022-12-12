@@ -1,3 +1,4 @@
+import 'package:don8_flutter/pages/new_donation/newdonation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'common/constants.dart';
@@ -7,6 +8,7 @@ import 'pages/auth/register.dart';
 import 'pages/portal.dart';
 import 'widgets/example.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'pages/supportmsg/support.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -32,6 +34,8 @@ class MyApp extends StatelessWidget {
             "/login": (BuildContext context) => const LoginPage(),
             "/register": (BuildContext context) => const RegisterPage(),
             "/example": (BuildContext context) => const ContohPenggunaan(),
+            "/newdonation": (BuildContext context) => const NewDonation(),
+            "/message": (BuildContext context) => const ShowMessage(),
           },
         ));
   }
