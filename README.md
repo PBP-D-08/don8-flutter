@@ -7,9 +7,9 @@
 - **Mariana Salma Saraswati** - 2106702516
 - **Wedens Elma Malau** - 2106751165
   
-Tautan aplikasi Heroku: don8-proyek-ts.up.railway.app
+🔗 Tautan aplikasi Heroku: [don8-proyek-ts.up.railway.app](don8-proyek-ts.up.railway.app)
 
-Tautan apk: TBA
+🔗 Tautan apk: TBA
 
 ## Cerita aplikasi yang diajukan serta manfaatnya
 **Don8** merupakan sebuah platform donasi online yang menghubungkan donatur dengan organisasi, dimana organisasi dapat mendaftarkan kegiatan penggalangan dana. Platform donasi memberikan peluang bagi organisasi non-profit untuk menggalang dana dan masyarakat umum untuk melakukan donasi.
@@ -69,5 +69,5 @@ Tautan apk: TBA
 ## Alur pengintegrasian dengan web service untuk terhubung dengan aplikasi web yang sudah dibuat saat Proyek Tengah Semester
 Agar kita bisa mengakses dan melakukan data delivery dengan Flutter melalui endpoint website yang sudah dibuat sebelumnya, kami menambahkan middleware di proyek Django. Kami akan memanfaatkan endpoint API yang telah kami buat di proyek tengah semester. Endpoint tersebut me-return data dalam bentuk JSON yang dapat kami olah dan baca di Flutter. Kami akan menggunakan fungsi-fungsi dari HTTP package yang disediakan oleh Flutter untuk melakukan HTTP request seperti GET dan POST yang menembak ke url API proyek tengah semester. GET digunakan untuk mengambil data dari web untuk diolah di widget, sedangkan POST digunakan untuk mengirim data ke database Django.
 
-## Daftar modul yang akan diimplementasikan
+## Deployment Aplikasi
 TBA
