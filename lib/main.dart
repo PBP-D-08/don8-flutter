@@ -1,3 +1,4 @@
+import 'package:don8_flutter/pages/new_donation/newdonation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'common/constants.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             "/login": (BuildContext context) => const LoginPage(),
             "/register": (BuildContext context) => const RegisterPage(),
             "/example": (BuildContext context) => const ContohPenggunaan(),
-            
+            "/newdonation": (BuildContext context) => const NewDonation(),
             "/message": (BuildContext context) => const ShowMessage(),
           },
         ));

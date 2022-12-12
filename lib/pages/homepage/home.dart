@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
                   if (snapshot.data == null) {
                     return const Center(child: CircularProgressIndicator());
                   } else {
-                    if (snapshot!.data.length == 0) {
+                    if (snapshot.data.length == 0) {
                       return Column(
                         children: const [
                           Text(
