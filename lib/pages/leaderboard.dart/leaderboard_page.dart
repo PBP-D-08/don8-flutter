@@ -5,7 +5,7 @@ import 'package:don8_flutter/pages/leaderboard.dart/sorted_donations.dart';
 import 'package:don8_flutter/pages/saved/saved.dart';
 import 'package:flutter/material.dart';
 import 'package:don8_flutter/common/constants.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/widgets/drawer.dart';
@@ -23,7 +23,7 @@ class LeaderboardPage extends StatefulWidget {
 class _LeaderboardPageState extends State<LeaderboardPage> {
   Future<List<SortedDonations>> fetchLeaderboard() async {
     var url =
-        Uri.parse('${dotenv.env['API_URL']}/leaderboard/show_json_sorted/');
+        Uri.parse('$API_URL/leaderboard/show_json_sorted/');
     var response = await http.get(
       url,
       headers: {

@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:flutter/material.dart';
+import '../common/constants.dart';
 
 Future<String> deleteSaved(
     CookieRequest request, BuildContext context, int id) async {
-  final url = Uri.parse("${dotenv.env['API_URL']}/saved/delete/$id/");
+  final url = Uri.parse("$API_URL/saved/delete/$id/");
   final httpRequest = http.Request("DELETE", url);
   httpRequest.headers.addAll(request.headers);
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const API_URL = "https://don8-proyek-ts.up.railway.app";
+
 // Colors
 const Color darkColor = Color(0xFF000000);
 const Color lightColor = Color(0xFFFFFFFF);

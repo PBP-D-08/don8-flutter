@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:don8_flutter/widgets/drawer.dart';
 import 'package:don8_flutter/common/constants.dart';
 
@@ -33,7 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   onPressed(BuildContext context, request) async {
     final response = await request
-        .post("${dotenv.env['API_URL']}/auth/register_flutter/", {
+        .post("$API_URL/auth/register_flutter/", {
       'username': _username,
       'password1': _password1,
       'password2': _password2,

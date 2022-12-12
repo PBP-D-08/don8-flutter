@@ -6,7 +6,7 @@ import 'package:don8_flutter/models/Donation.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:don8_flutter/utils/like_post.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:don8_flutter/common/constants.dart';
 import 'post_message.dart';
 
@@ -41,7 +41,7 @@ class _ShowMessageState extends State<ShowMessage> {
   @override
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
-    donations = fetchDonations(request, "${dotenv.env['API_URL']}/donation");
+    donations = fetchDonations(request, "$API_URL/donation");
     listMessages = fetchMessages(request, dropDownValue);
 
 

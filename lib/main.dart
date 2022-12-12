@@ -8,13 +8,12 @@ import 'pages/auth/login.dart';
 import 'pages/auth/register.dart';
 import 'pages/portal.dart';
 import 'widgets/example.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'pages/supportmsg/support.dart';
 import 'pages/user_profile/user_profile.dart';
 import 'pages/user_profile/history.dart';
 
 Future main() async {
-  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 

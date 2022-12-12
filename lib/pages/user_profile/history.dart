@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:don8_flutter/common/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/models/globals/available_donation.dart';
 import 'package:don8_flutter/pages/donation_page/donation.dart';
@@ -26,7 +26,7 @@ class _HistoryPageState extends State<HistoryPage> {
     final request = context.watch<CookieRequest>();
     User? user = getUser(request);
 
-    String url = "${dotenv.env['API_URL']}/profile/user/${user?.username}/history/json/";
+    String url = "$API_URL/profile/user/${user?.username}/history/json/";
     Future<List<UserDonation>> _donationsHistory = fetchUserDonation();
 
     return Scaffold(

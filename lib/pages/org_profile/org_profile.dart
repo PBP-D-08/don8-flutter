@@ -8,7 +8,7 @@ import 'package:don8_flutter/utils/get_user.dart';
 import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/models/globals/available_donation.dart';
 import 'package:don8_flutter/widgets/drawer.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:provider/provider.dart';
 import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/models/org_profile_data.dart';
@@ -34,22 +34,22 @@ class _OrgProfileState extends State<OrgProfile> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
 
-    var url = "${dotenv.env['API_URL']}/profile/org/${widget.user
+    var url = "$API_URL/profile/org/${widget.user
         .username}/donationsf";
     if (widget.status == "cmp") {
-      url = "${dotenv.env['API_URL']}/profile/org/${widget.user
+      url = "$API_URL/profile/org/${widget.user
           .username}/donationscompf";
     } else if (widget.status == "exp") {
-      url = "${dotenv.env['API_URL']}/profile/org/${widget.user
+      url = "$API_URL/profile/org/${widget.user
           .username}/donationsexpf";
     } else {
-      url = "${dotenv.env['API_URL']}/profile/org/${widget.user
+      url = "$API_URL/profile/org/${widget.user
           .username}/donationsprof";
     }
 
     Future<List<Donation>> donations =
     fetchDonations(request, url);
-    Future<List<UserOrg>> prof = fetchOrg(request, "${dotenv.env['API_URL']}/profile/org/${widget.user
+    Future<List<UserOrg>> prof = fetchOrg(request, "$API_URL/profile/org/${widget.user
         .username}/donationsshow");
 
     final userView = request.cookies["user"];
@@ -94,7 +94,7 @@ class _OrgProfileState extends State<OrgProfile> {
                     spacing: 10,
                     children: [
                       FutureBuilder(
-                          future: fetchOrg(request, "${dotenv.env['API_URL']}/profile/org/${widget.user.username}/donationsshow"),
+                          future: fetchOrg(request, "$API_URL/profile/org/${widget.user.username}/donationsshow"),
                           builder: (context, AsyncSnapshot snapshot) {
                             return Column(
                               children: [
@@ -326,7 +326,7 @@ class _OrgProfileState extends State<OrgProfile> {
                     spacing: 10,
                     children: [
                       FutureBuilder(
-                          future: fetchOrg(request, "${dotenv.env['API_URL']}/profile/org/${widget.user.username}/donationsshow"),
+                          future: fetchOrg(request, "$API_URL/profile/org/${widget.user.username}/donationsshow"),
                           builder: (context, AsyncSnapshot snapshot) {
                             return Column(
                               children: [
@@ -615,7 +615,7 @@ class _OrgProfileState extends State<OrgProfile> {
                   spacing: 10,
                   children: [
                     FutureBuilder(
-                        future: fetchOrg(request, "${dotenv.env['API_URL']}/profile/org/${widget.user.username}/donationsshow"),
+                        future: fetchOrg(request, "$API_URL/profile/org/${widget.user.username}/donationsshow"),
                         builder: (context, AsyncSnapshot snapshot) {
                           return Column(
                             children: [

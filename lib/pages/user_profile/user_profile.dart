@@ -9,7 +9,7 @@ import 'package:don8_flutter/utils/fetch_donations.dart';
 import 'package:don8_flutter/utils/get_user.dart';
 import 'package:don8_flutter/pages/donation_page/donation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/drawer.dart';

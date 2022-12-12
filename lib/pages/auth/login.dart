@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/widgets/drawer.dart';
 import 'package:don8_flutter/common/constants.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   String _password = "";
 
   onPressed(BuildContext context, request) async {
-    final response = await request.login("${dotenv.env['API_URL']}/auth/login_flutter/", {
+    final response = await request.login("$API_URL/auth/login_flutter/", {
       'username': _username,
       'password': _password,
     });

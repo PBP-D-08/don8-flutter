@@ -8,7 +8,6 @@ import 'package:don8_flutter/utils/fetch_donations.dart';
 import 'package:don8_flutter/utils/get_user.dart';
 import 'package:don8_flutter/pages/donation_page/donation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -25,8 +24,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final request = context.watch<CookieRequest>();
     User? user = getUser(request);
-    Future<List<Donation>> donations =
-        fetchDonations(request, "${dotenv.env['API_URL']}/donation");
 
     return SingleChildScrollView(
       child: Padding(
@@ -60,13 +57,13 @@ class _HomeState extends State<Home> {
               height: 20,
             ),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  "Sebuah platform donasi online yang menghubungkan donatur dengan organisasi, dimana organisasi dapat mendaftarkan kegiatan penggalangan dana. Platform donasi memberikan peluang bagi organisasi nonprofit untuk menggalang dana dan masyarakat umum untuk melakukan donasi.",
-                  style: defaultText.copyWith(
-                      color: greenDark, fontWeight: FontWeight.w600),
-                  textAlign: TextAlign.justify,
-                ),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                "Sebuah platform donasi online yang menghubungkan donatur dengan organisasi, dimana organisasi dapat mendaftarkan kegiatan penggalangan dana. Platform donasi memberikan peluang bagi organisasi nonprofit untuk menggalang dana dan masyarakat umum untuk melakukan donasi.",
+                style: defaultText.copyWith(
+                    color: greenDark, fontWeight: FontWeight.w600),
+                textAlign: TextAlign.justify,
+              ),
             ),
             const SizedBox(
               height: 140,
@@ -79,8 +76,7 @@ class _HomeState extends State<Home> {
               height: 20,
             ),
             FutureBuilder(
-                future: fetchDonations(
-                    request, "${dotenv.env['API_URL']}/donation"),
+                future: fetchDonations(request, "$API_URL/donation"),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.data == null) {
                     return const Center(child: CircularProgressIndicator());
@@ -106,7 +102,8 @@ class _HomeState extends State<Home> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(24),
                                 ),
-                                margin: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: 25, vertical: 15),
                                 child: Column(
                                   children: [
                                     Padding(
@@ -122,7 +119,8 @@ class _HomeState extends State<Home> {
                                     ),
                                     ListTile(
                                       title: Padding(
-                                        padding: const EdgeInsets.only(bottom: 15),
+                                        padding:
+                                            const EdgeInsets.only(bottom: 15),
                                         child: Text(
                                           snapshot.data![index].fields.title,
                                           style: const TextStyle(
@@ -133,34 +131,39 @@ class _HomeState extends State<Home> {
                                         ),
                                       ),
                                       subtitle: RichText(
-                                        text: TextSpan(
-                                            children: [
-                                              TextSpan(
-                                                text: "Rp ",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16,
-                                                    color: Color(0xFFFFDDD2)),
-                                              ),
-                                              TextSpan(
-                                                text: NumberFormat.decimalPattern('en_us').format(snapshot.data![index].fields.moneyAccumulated).toString().replaceAll(",", "."),
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16,
-                                                    color: Color(0xFFEDF6F9)),
-                                              ),
-                                              TextSpan(
-                                                text: " terkumpul",
-                                                style: TextStyle(fontSize: 16,
-                                                    color: Color(0xFFFFDDD2)),
-                                              ),
-                                            ]
-                                        ),
+                                        text: TextSpan(children: [
+                                          TextSpan(
+                                            text: "Rp ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                color: Color(0xFFFFDDD2)),
+                                          ),
+                                          TextSpan(
+                                            text: NumberFormat.decimalPattern(
+                                                    'en_us')
+                                                .format(snapshot.data![index]
+                                                    .fields.moneyAccumulated)
+                                                .toString()
+                                                .replaceAll(",", "."),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                color: Color(0xFFEDF6F9)),
+                                          ),
+                                          TextSpan(
+                                            text: " terkumpul",
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                color: Color(0xFFFFDDD2)),
+                                          ),
+                                        ]),
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10, horizontal: 45),
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: LinearProgressIndicator(

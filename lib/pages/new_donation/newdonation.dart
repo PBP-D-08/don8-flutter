@@ -4,7 +4,7 @@ import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/pages/homepage/home.dart';
 import 'package:flutter/material.dart';
 import 'package:don8_flutter/common/constants.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import '../../../widgets/drawer.dart';
@@ -29,7 +29,7 @@ class NewDonation extends StatefulWidget {
 //     String money_needed,
 //     String user_id) async {
 //   final response = await http.post(
-//     Uri.parse('${dotenv.env['API_URL']}/add_ajax_donation_mobile/'),
+//     Uri.parse('$API_URL/add_ajax_donation_mobile/'),
 //     headers: <String, String>{
 //       'Content-Type': 'application/json; charset=UTF-8',
 //     },
@@ -87,7 +87,7 @@ class _NewDonationState extends State<NewDonation> {
       String money_needed,
       String user_id) async {
     final response = await request
-        .post("${dotenv.env['API_URL']}/add_ajax_donation_mobile/", {
+        .post("$API_URL/add_ajax_donation_mobile/", {
       'title': title,
       'description': description,
       'image_url': image_url,

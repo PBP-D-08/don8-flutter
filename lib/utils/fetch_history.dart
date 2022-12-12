@@ -1,14 +1,15 @@
 import 'package:don8_flutter/models/user_donation.dart';
 import 'package:don8_flutter/utils/get_user.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'dart:convert';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import '../models/User.dart';
+import '../common/constants.dart';
 
 Future<List<UserDonation>> fetchHistory(CookieRequest request) async {
   User? user = getUser(request);
-  var url = Uri.parse("${dotenv.env['API_URL']}/profile/user/${user?.username}/flutter-history/");
+  var url = Uri.parse("$API_URL/profile/user/${user?.username}/flutter-history/");
   var response = await http.get(
     url,
     headers: {

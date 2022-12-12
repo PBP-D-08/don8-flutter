@@ -7,7 +7,7 @@ import 'package:don8_flutter/utils/get_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:don8_flutter/models/user_donation.dart';
 import 'package:don8_flutter/utils/top_up.dart';
 
@@ -126,7 +126,7 @@ Future<dynamic> buildForm(
 
   topUp(BuildContext context, request) async {
     final response = await request.post(
-        "${dotenv.env['API_URL']}/profile/user/topup/",
+        "$API_URL/profile/user/topup/",
         {"amount": amountInput.value});
     if (response['status'] == true) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

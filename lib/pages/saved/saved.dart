@@ -4,7 +4,7 @@ import 'package:don8_flutter/common/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/utils/fetch_donations.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 import 'package:don8_flutter/models/User.dart';
 import 'package:don8_flutter/models/globals/available_donation.dart';
 import 'package:don8_flutter/pages/donation_page/donation.dart';
@@ -25,7 +25,7 @@ class _SavedPageState extends State<SavedPage> {
     final request = context.watch<CookieRequest>();
     User? user = getUser(request);
 
-    String url = "${dotenv.env['API_URL']}/saved/json/${user?.username}/";
+    String url = "$API_URL/saved/json/${user?.username}/";
     Future<List<Donation>> _savedDonations = fetchDonations(request, url);
 
     return SingleChildScrollView(

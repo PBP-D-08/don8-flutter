@@ -3,7 +3,7 @@
 import 'package:don8_flutter/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 Future<dynamic> buildForm(
   BuildContext context,
@@ -15,7 +15,7 @@ Future<dynamic> buildForm(
 
   createPost(BuildContext context, request) async {
     final response = await request.post(
-        "${dotenv.env['API_URL']}/message/add-message-flutter/",
+        "$API_URL/message/add-message-flutter/",
         {"donation-name": dropdownvalue, "message": msgController.text});
     if (response['status'] == true) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
