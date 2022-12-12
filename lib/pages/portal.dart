@@ -7,6 +7,7 @@ import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:don8_flutter/widgets/drawer.dart';
 import 'package:don8_flutter/utils/get_user.dart';
 import 'homepage/home.dart';
+import 'supportmsg/support.dart';
 
 class PortalPage extends StatefulWidget {
   const PortalPage({super.key});
@@ -25,7 +26,7 @@ class _PortalPageState extends State<PortalPage> {
   static const List<Widget> _userOptions = <Widget>[
     Home(),
     SavedPage(),
-    Text("Coming soon"),
+    ShowMessage(),
     Text("Coming soon"),
   ];
 

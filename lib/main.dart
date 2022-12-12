@@ -7,6 +7,7 @@ import 'pages/auth/register.dart';
 import 'pages/portal.dart';
 import 'widgets/example.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'pages/supportmsg/support.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -32,6 +33,8 @@ class MyApp extends StatelessWidget {
             "/login": (BuildContext context) => const LoginPage(),
             "/register": (BuildContext context) => const RegisterPage(),
             "/example": (BuildContext context) => const ContohPenggunaan(),
+            
+            "/message": (BuildContext context) => const ShowMessage(),
           },
         ));
   }
