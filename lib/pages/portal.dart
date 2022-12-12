@@ -20,7 +20,7 @@ class PortalPage extends StatefulWidget {
 class _PortalPageState extends State<PortalPage> {
   static const List<Widget> _nonUserOptions = <Widget>[
     Home(),
-    Text("Coming soon"),
+    ShowMessage(),
     LeaderboardPage(),
   ];
 
